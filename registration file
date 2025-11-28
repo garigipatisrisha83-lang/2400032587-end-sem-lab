@@ -1,0 +1,50 @@
+*<!DOCTYPE html>
+<html>
+<head>
+    <title>Multi-Step Form</title>
+    <style>
+        .step { display: none; }
+        .active { display: block; }
+        .btn { margin-top: 10px; }
+    </style>
+</head>
+<body>
+
+<h2>Student Registration</h2>
+
+<!-- Step 1 -->
+<div id="step1" class="step active">
+    <h3>Step 1: Enter Details</h3>
+    Name: <input type="text" id="name"><br><br>
+    Email: <input type="email" id="email"><br><br>
+    <button class="btn" onclick="nextStep()">Next</button>
+</div>
+
+<!-- Step 2 -->
+<div id="step2" class="step">
+    <h3>Step 2: Summary</h3>
+    <p id="summary"></p>
+    <button class="btn" onclick="backStep()">Back</button>
+</div>
+
+<script>
+function nextStep() {
+    let name = document.getElementById("name").value;
+    let email = document.getElementById("email").value;
+
+    document.getElementById("summary").innerHTML =
+        "Name: " + name + "<br>Email: " + email;
+
+    document.getElementById("step1").classList.remove("active");
+    document.getElementById("step2").classList.add("active");
+}
+
+function backStep() {
+    document.getElementById("step2").classList.remove("active");
+    document.getElementById("step1").classList.add("active");
+}
+</script>
+
+</body>
+</html>
+*
